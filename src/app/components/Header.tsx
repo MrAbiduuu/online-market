@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-// import Navbar from "./Navbar";
+import Navbar from "./Navbar";
 
 const Header = () => {
   const date = new Date().toLocaleDateString("bn-BD", {
@@ -42,7 +42,7 @@ const Header = () => {
           </button>
         </div>
       </div>
-      {/* <Navbar /> */}
+      <Navbar />
     </div>
   );
 };
