@@ -30,9 +30,9 @@ const Navbar = async () => {
             <Link
               key={nav.id}
               href={`/category/${nav.slug}`}
-              className="flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-gray-600 transition hover:bg-red-50 hover:text-red-600"
+              className="font-bold flex items-center gap-1 rounded-lg px-3 py-2 text-gray-600 transition hover:bg-red-50 hover:text-red-600"
             >
-              <span className="text-lg">{nav.icon}</span>
+              <span className="text-xl">{nav.icon}</span>
               <span>{nav.nameBn}</span>
             </Link>
           ))}

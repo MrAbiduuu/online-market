@@ -11,8 +11,8 @@ const Header = () => {
     <div>
       <div className="container mx-auto flex items-center justify-between px-4 py-4">
         {/* logo */}
-        <div className="flex items-center gap-4">
-          <div className="rounded-2xl bg-green-100 p-1 shadow-sm">
+        <div className="flex items-center gap-3">
+          <div className="rounded-2xl bg-green-200 p-2 shadow-sm">
             <Image
               src="/logo-icon.png"
               alt="logo"
