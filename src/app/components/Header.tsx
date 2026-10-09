@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import Navbar from "./Navbar";
+import Link from "next/link";
 
 const Header = () => {
   const date = new Date().toLocaleDateString("bn-BD", {
@@ -9,16 +10,16 @@ const Header = () => {
 
   return (
     <div>
-      <div className="container mx-auto flex items-center justify-between px-4 py-4">
+      <div className="container mx-auto flex items-center justify-between px-4 pt-2">
         {/* logo */}
-        <div className="flex items-center gap-3">
-          <div className="rounded-2xl bg-green-200 p-2 shadow-sm">
+        <Link href={`/`} className="flex items-center gap-3">
+          <div className="rounded-xl bg-green-300 p-1 shadow-sm">
             <Image
               src="/logo-icon.png"
               alt="logo"
-              width={50}
-              height={50}
-              className="rounded-xl p-3"
+              width={40}
+              height={40}
+              className="rounded-xl p-2"
             />
           </div>
 
@@ -29,7 +30,7 @@ const Header = () => {
 
             <div className="mt-1 text-sm text-gray-500">{date}</div>
           </div>
-        </div>
+        </Link>
 
         {/* signin signup */}
         <div className="flex items-center gap-3">
