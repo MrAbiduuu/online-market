@@ -84,7 +84,6 @@ const Marquee = async () => {
           </MarqueeText>
         </div>
       </div>
-      <HeroSec />
     </div>
   );
 };

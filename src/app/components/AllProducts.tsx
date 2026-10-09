@@ -1,29 +1,10 @@
+import { IncreasedPriceProps } from "@/types/productTypes";
 import React from "react";
 
-type DecreasedPriceProps = {
-  decreasedProducts: Array<{
-    id: string | number;
-    categoryIcon: string;
-    nameBn: string;
-    categoryNameBn: string;
-    today: number;
-    unit: string;
-    yesterday: number;
-    change?: {
-      dir?: string;
-      pct?: number;
-    };
-  }>;
-};
-
-const DecreasedPrice = ({ decreasedProducts }: DecreasedPriceProps) => {
-  const filteredDecreasedProducts = decreasedProducts.filter(
-    (p) => p.change?.dir === "down",
-  );
-
+const AllProducts = ({ product }: IncreasedPriceProps) => {
   return (
     <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-      {filteredDecreasedProducts.slice(0, 6).map((p) => (
+      {product.map((p) => (
         <div
           key={p.id}
           className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg"
@@ -61,14 +42,8 @@ const DecreasedPrice = ({ decreasedProducts }: DecreasedPriceProps) => {
           </div>
         </div>
       ))}
-
-      {filteredDecreasedProducts.length === 0 && (
-        <p className="col-span-full rounded-xl bg-gray-50 py-8 text-center text-gray-500">
-          আজ কোনো পণ্যের দাম কমেনি।
-        </p>
-      )}
     </div>
   );
 };
 
-export default DecreasedPrice;
+export default AllProducts;
