@@ -42,7 +42,7 @@ const Marquee = async () => {
           </div>
 
           {/* Marquee */}
-          <MarqueeText direction="right" pauseOnHover duration={10}>
+          <MarqueeText direction="right" pauseOnHover duration={5}>
             <div className="relative flex-1 overflow-hidden">
               <div className="animate-marquee flex w-max items-center gap-8 whitespace-nowrap px-6">
                 {products.map((product) => (

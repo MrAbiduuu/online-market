@@ -1,12 +1,14 @@
 import { IncreasedPriceProps } from "@/types/productTypes";
+import Link from "next/link";
 import React from "react";
 
 const AllProducts = ({ product }: IncreasedPriceProps) => {
   return (
     <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {product.map((p) => (
-        <div
+        <Link
           key={p.id}
+          href={`/products/${p.slug}`}
           className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg"
         >
           {/* Product info */}
@@ -40,7 +42,7 @@ const AllProducts = ({ product }: IncreasedPriceProps) => {
 
             <p className="mt-2 text-sm text-gray-500">গতকাল: ৳{p.yesterday}</p>
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   );

@@ -23,6 +23,7 @@ export default async function Home() {
 
   type Product = {
     id: string | number;
+    slug: string;
     categoryIcon: string;
     nameBn: string;
     categoryNameBn: string;
@@ -80,8 +81,7 @@ export default async function Home() {
                     : normalizedDir === "down"
                       ? "down"
                       : undefined,
-              pct:
-                typeof change.pct === "number" ? change.pct : undefined,
+              pct: typeof change.pct === "number" ? change.pct : undefined,
             }
           : undefined,
       };

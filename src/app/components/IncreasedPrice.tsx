@@ -4,6 +4,7 @@ import React from "react";
 
 type ProductPriceItem = {
   id: string | number;
+  slug: string;
   categoryIcon: React.ReactNode;
   nameBn: string;
   categoryNameBn: string;
@@ -30,13 +31,14 @@ const IncreasedPrice = ({
   );
 
   return (
-    <Link href={`/`}>
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {visibleProducts.slice(0, 6).map((p) => (
-          <div
-            key={p.id}
-            className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg"
-          >
+    <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {visibleProducts.slice(0, 6).map((p) => (
+        <Link
+          key={p.id}
+          href={`/products/${p.slug}`}
+          className="block rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+        >
+          <div key={p.id}>
             {/* Product info */}
             <div className="flex items-center gap-3">
               <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-green-50 text-3xl">
@@ -71,15 +73,15 @@ const IncreasedPrice = ({
               </p>
             </div>
           </div>
-        ))}
+        </Link>
+      ))}
 
-        {visibleProducts.length === 0 && (
-          <p className="col-span-full py-8 text-center text-gray-500">
-            আজ কোনো পণ্যের দাম বাড়েনি।
-          </p>
-        )}
-      </div>
-    </Link>
+      {visibleProducts.length === 0 && (
+        <p className="col-span-full py-8 text-center text-gray-500">
+          আজ কোনো পণ্যের দাম বাড়েনি।
+        </p>
+      )}
+    </div>
   );
 };
 

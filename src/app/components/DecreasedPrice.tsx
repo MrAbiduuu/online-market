@@ -1,8 +1,10 @@
+import Link from "next/link";
 import React from "react";
 
 type DecreasedPriceProps = {
   decreasedProducts: Array<{
     id: string | number;
+    slug: string;
     categoryIcon: string;
     nameBn: string;
     categoryNameBn: string;
@@ -24,8 +26,9 @@ const DecreasedPrice = ({ decreasedProducts }: DecreasedPriceProps) => {
   return (
     <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {filteredDecreasedProducts.slice(0, 6).map((p) => (
-        <div
+        <Link
           key={p.id}
+          href={`/products/${p.slug}`}
           className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg"
         >
           {/* Product info */}
@@ -59,7 +62,7 @@ const DecreasedPrice = ({ decreasedProducts }: DecreasedPriceProps) => {
 
             <p className="mt-2 text-sm text-gray-500">গতকাল: ৳{p.yesterday}</p>
           </div>
-        </div>
+        </Link>
       ))}
 
       {filteredDecreasedProducts.length === 0 && (

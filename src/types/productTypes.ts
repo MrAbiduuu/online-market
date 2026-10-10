@@ -5,6 +5,7 @@ export interface ProductChange {
 
 export interface ProductItem {
   id: string | number;
+  slug: string;
   nameBn?: string;
   categoryNameBn?: string;
   categoryIcon?: string | React.ReactNode;
