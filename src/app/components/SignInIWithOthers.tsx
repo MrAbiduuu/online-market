@@ -7,6 +7,11 @@ const SignInIWithOthers = () => {
       provider: "google",
     });
   };
+  const handleGitHubSignIn = async () => {
+    const data = await authClient.signIn.social({
+      provider: "github",
+    });
+  };
   return (
     <div>
       <div className="flex flex-col gap-3 sm:flex-row">
@@ -45,6 +50,7 @@ const SignInIWithOthers = () => {
 
         {/* GitHub */}
         <button
+          onClick={handleGitHubSignIn}
           type="button"
           className="flex w-full items-center justify-center gap-3 rounded-xl border border-gray-800 bg-white px-4 py-3 font-semibold text-gray-900 shadow-sm transition duration-200 hover:border-black hover:bg-black hover:text-white hover:shadow-md"
         >
