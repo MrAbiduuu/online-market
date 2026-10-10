@@ -2,6 +2,8 @@
 
 import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
+import { FaUser } from "react-icons/fa";
+import { PiSignOutBold } from "react-icons/pi";
 
 const UserInfo = () => {
   const { data: session } = authClient.useSession();
@@ -31,7 +33,10 @@ const UserInfo = () => {
         </div>
       ) : (
         <div className="flex items-center gap-1 text-sm font-medium text-gray-700">
-          <div className="p-2 bg-gray-200 rounded-2xl flex gap-1 items-center">
+          <Link
+            href={`/profile`}
+            className="p-2 bg-gray-200 rounded-2xl flex gap-1 items-center"
+          >
             <span
               className="flex h-9 w-10 items-center justify-center rounded-2xl bg-green-900 font-bold text-white"
               title={user.email}
@@ -41,29 +46,35 @@ const UserInfo = () => {
                 "U"}
             </span>
             <p>{user.name}</p>
-          </div>
+          </Link>
 
           <div className="dropdown dropdown-end">
             <div tabIndex={0} role="button" className="btn m-1">
               ⌄
             </div>
+
             <ul
               tabIndex={-1}
-              className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+              className="dropdown-content menu bg-base-100 rounded-box z-1 p-2 shadow-sm my-2"
             >
-              <li>
+              <div>
+                <p className="text-gray-500 mb-2">{user.email}</p>
+              </div>
+              <li className="my-2">
                 <Link
                   href={`/profile`}
-                  className="rounded-lg border border-red-200 px-4 py-2 font-semibold text-red-600 transition duration-200 hover:border-red-600 hover:bg-red-50"
+                  className="rounded-lg border border-gray-200 px-4 py-2 font-semibold text-gray-600 transition duration-200 hover:bg-gray-50"
                 >
+                  <FaUser />
                   Profile
                 </Link>
               </li>
-              <li>
+              <li className="my-2">
                 <button
                   onClick={handleSignOut}
                   className="rounded-lg border border-red-200 px-4 py-2 font-semibold text-red-600 transition duration-200 hover:border-red-600 hover:bg-red-50"
                 >
+                  <PiSignOutBold />
                   সাইন আউট
                 </button>
               </li>

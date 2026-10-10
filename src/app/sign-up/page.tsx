@@ -4,16 +4,18 @@ import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import SignInIWithOthers from "../components/SignInIWithOthers";
 
 const SignUpPage = () => {
   const router = useRouter();
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (password.length < 8) {
@@ -164,6 +166,12 @@ const SignUpPage = () => {
             সাইন ইন করুন
           </Link>
         </p>
+
+        <div className="mt-6">
+          <div className="divider text-sm text-gray-400">অথবা</div>
+
+          <SignInIWithOthers />
+        </div>
       </div>
     </main>
   );

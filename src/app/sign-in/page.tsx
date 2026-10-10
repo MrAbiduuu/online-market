@@ -4,6 +4,7 @@ import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import SignInIWithOthers from "../components/SignInIWithOthers";
 
 const SignInPage = () => {
   const router = useRouter();
@@ -127,7 +128,7 @@ const SignInPage = () => {
           </Link>
         </p>
 
-        <div className="mt-6 border-t border-gray-100 pt-5 text-center">
+        <div className="mb-6 border-b border-gray-100 pt-5 text-center">
           <Link
             href="/"
             className="text-sm font-medium text-green-800 hover:underline"
@@ -135,6 +136,7 @@ const SignInPage = () => {
             ← হোম পেজে ফিরে যান
           </Link>
         </div>
+        <SignInIWithOthers />
       </div>
     </main>
   );
