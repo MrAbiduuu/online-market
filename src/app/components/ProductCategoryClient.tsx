@@ -2,6 +2,7 @@
 
 import React, { useMemo, useState } from "react";
 import { ProductChange } from "../category/[slug]/page";
+import Link from "next/link";
 
 type SortOption =
   | "default"
@@ -211,9 +212,10 @@ const ProductCategoryClient = ({
                       : 0;
 
                   return (
-                    <article
+                    <Link
                       key={product.id}
-                      className="group rounded-2xl border border-base-300 bg-base-100 p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg"
+                      href={`/products/${product.slug}`}
+                      className="group rounded-2xl border border-base-300 bg-base-100 p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-green-800 hover:shadow-lg "
                     >
                       <div className="mb-5 flex items-start justify-between gap-3">
                         <div className="flex min-w-0 items-center gap-3">
@@ -287,7 +289,7 @@ const ProductCategoryClient = ({
                           </p>
                         </div>
                       </div>
-                    </article>
+                    </Link>
                   );
                 })}
               </div>

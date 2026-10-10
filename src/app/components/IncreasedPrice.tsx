@@ -36,7 +36,7 @@ const IncreasedPrice = ({
         <Link
           key={p.id}
           href={`/products/${p.slug}`}
-          className="block rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+          className="block rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-lg hover:border-green-800"
         >
           <div key={p.id}>
             {/* Product info */}

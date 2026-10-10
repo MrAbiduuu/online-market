@@ -34,13 +34,19 @@ const Header = () => {
 
         {/* signin signup */}
         <div className="flex items-center gap-3">
-          <button className="rounded-lg border border-gray-300 px-5 py-2 font-medium text-gray-700 transition duration-200 hover:border-green-900 hover:text-green-900">
+          <Link
+            href={`/sign-in`}
+            className="rounded-lg border border-gray-300 px-5 py-2 font-medium text-gray-700 transition duration-200 hover:border-green-900 hover:text-green-900"
+          >
             সাইন ইন
-          </button>
+          </Link>
 
-          <button className="rounded-lg bg-green-800 px-5 py-2 font-semibold text-white shadow-sm transition duration-200 hover:bg-green-900 hover:shadow-md">
+          <Link
+            href={`/sign-up`}
+            className="rounded-lg bg-green-800 px-5 py-2 font-semibold text-white shadow-sm transition duration-200 hover:bg-green-900 hover:shadow-md"
+          >
             সাইন আপ
-          </button>
+          </Link>
         </div>
       </div>
       <Navbar />

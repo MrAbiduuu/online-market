@@ -1,6 +1,6 @@
 import React from "react";
 import MarqueeText from "react-marquee-text";
-import HeroSec from "./HeroSec";
+// import HeroSec from "./HeroSec";
 
 interface Product {
   id: number;
