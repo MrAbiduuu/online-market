@@ -1,14 +1,19 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const SignInPage = () => {
+  const router = useRouter();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError("");
 
@@ -17,8 +22,29 @@ const SignInPage = () => {
       return;
     }
 
-    // এখানে তোমার লগইন API যুক্ত করবে।
-    console.log({ email, password });
+    setLoading(true);
+
+    try {
+      const { data, error: signInError } = await authClient.signIn.email({
+        email,
+        password,
+        callbackURL: "/",
+      });
+
+      if (signInError) {
+        setError(signInError.message || "সাইন ইন করা সম্ভব হয়নি।");
+        return;
+      }
+
+      if (data) {
+        router.push("/");
+        router.refresh();
+      }
+    } catch {
+      setError("একটি সমস্যা হয়েছে। আবার চেষ্টা করুন।");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -84,9 +110,10 @@ const SignInPage = () => {
 
           <button
             type="submit"
-            className="btn w-full rounded-xl border-0 bg-green-800 text-white hover:bg-green-900"
+            disabled={loading}
+            className="btn w-full rounded-xl border-0 bg-green-800 text-white hover:bg-green-900 disabled:opacity-60"
           >
-            সাইন ইন
+            {loading ? "সাইন ইন হচ্ছে..." : "সাইন ইন করুন"}
           </button>
         </form>
 
@@ -112,4 +139,5 @@ const SignInPage = () => {
     </main>
   );
 };
+
 export default SignInPage;

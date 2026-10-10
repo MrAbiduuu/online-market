@@ -1,18 +1,20 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const SignUpPage = () => {
+  const router = useRouter();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setError("");
 
     if (password.length < 8) {
       setError("পাসওয়ার্ড কমপক্ষে ৮ অক্ষরের হতে হবে।");
@@ -24,8 +26,24 @@ const SignUpPage = () => {
       return;
     }
 
-    // এখানে তোমার অ্যাকাউন্ট তৈরির API যুক্ত করবে।
-    console.log({ name, email, password });
+    setError("");
+
+    const { data, error: signUpError } = await authClient.signUp.email({
+      name,
+      email,
+      password,
+      callbackURL: "/",
+    });
+
+    if (data) {
+      console.log(data);
+      router.push("/");
+    }
+
+    if (signUpError) {
+      setError(signUpError.message || "সাইন আপ করা সম্ভব হয়নি।");
+      console.log(signUpError);
+    }
   };
 
   return (
@@ -133,7 +151,7 @@ const SignUpPage = () => {
             type="submit"
             className="btn w-full rounded-xl border-0 bg-green-800 text-white hover:bg-green-900"
           >
-            অ্যাকাউন্ট তৈরি করুন
+            সাইন আপ করুন
           </button>
         </form>
 

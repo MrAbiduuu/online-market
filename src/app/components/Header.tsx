@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import Navbar from "./Navbar";
 import Link from "next/link";
+import UserInfo from "./UserInfo";
 
 const Header = () => {
   const date = new Date().toLocaleDateString("bn-BD", {
@@ -13,7 +14,7 @@ const Header = () => {
       <div className="container mx-auto flex items-center justify-between px-4 pt-2">
         {/* logo */}
         <Link href={`/`} className="flex items-center gap-3">
-          <div className="rounded-xl bg-green-300 p-1 shadow-sm">
+          <div className="rounded-xl bg-green-800 p-1 shadow-sm">
             <Image
               src="/logo-icon.png"
               alt="logo"
@@ -33,21 +34,7 @@ const Header = () => {
         </Link>
 
         {/* signin signup */}
-        <div className="flex items-center gap-3">
-          <Link
-            href={`/sign-in`}
-            className="rounded-lg border border-gray-300 px-5 py-2 font-medium text-gray-700 transition duration-200 hover:border-green-900 hover:text-green-900"
-          >
-            সাইন ইন
-          </Link>
-
-          <Link
-            href={`/sign-up`}
-            className="rounded-lg bg-green-800 px-5 py-2 font-semibold text-white shadow-sm transition duration-200 hover:bg-green-900 hover:shadow-md"
-          >
-            সাইন আপ
-          </Link>
-        </div>
+        <UserInfo />
       </div>
       <Navbar />
     </div>
