@@ -5,6 +5,7 @@ const HeroSec = () => {
   const date = new Date().toLocaleDateString("bn-BD", {
     dateStyle: "full",
   });
+
   return (
     <div className="container mx-auto px-4 py-8 md:py-14">
       <div className="relative overflow-hidden rounded-3xl bg-linear-to-br from-green-50 via-white to-lime-100 px-6 py-10 shadow-sm md:px-12 md:py-14">
@@ -30,10 +31,11 @@ const HeroSec = () => {
               বিস্তারিত, গড়, সর্বনিম্ন-সর্বাধিক এবং দামের পরিবর্তন এক জায়গায়।
             </p>
 
+            {/* Primary CTA */}
             <div className="mt-7 flex flex-wrap justify-center gap-3 md:justify-start">
               <a
-                href="#market-prices"
-                className="rounded-xl bg-green-700 px-6 py-3 font-semibold text-white shadow-lg shadow-green-700/20 transition hover:-translate-y-1 hover:bg-green-800"
+                href="#all-products"
+                className="rounded-xl bg-green-700 px-6 py-3 font-semibold text-white shadow-lg shadow-green-700/20 transition duration-300 hover:-translate-y-1 hover:bg-green-800"
               >
                 সব পণ্য দেখুন
               </a>

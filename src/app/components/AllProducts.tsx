@@ -15,8 +15,15 @@ type SortOption =
 const AllProducts = ({ product }: IncreasedPriceProps) => {
   const [sortBy, setSortBy] = useState<SortOption>("default");
 
-  const toNumber = (value: number | string | null | undefined) =>
-    Number(value ?? 0);
+  const toNumber = (value: number | string | null | undefined) => {
+    const bnDigits = "০১২৩৪৫৬৭৮৯";
+
+    const normalized = String(value ?? 0).replace(/[০-৯]/g, (digit) =>
+      String(bnDigits.indexOf(digit)),
+    );
+
+    return Number(normalized) || 0;
+  };
 
   const sortedProducts = useMemo(() => {
     const result = [...product];
@@ -53,13 +60,16 @@ const AllProducts = ({ product }: IncreasedPriceProps) => {
             (toNumber(b.today) - toNumber(b.yesterday)),
         );
         break;
+
+      default:
+        break;
     }
 
     return result;
   }, [product, sortBy]);
 
   return (
-    <div>
+    <div id="all-products" className="scroll-mt-24">
       {/* Sorting bar */}
       <div className="mb-5 flex flex-wrap items-center gap-3">
         <div className="flex items-center gap-3">

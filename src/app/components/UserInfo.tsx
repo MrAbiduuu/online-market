@@ -4,6 +4,7 @@ import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
 import { FaUser } from "react-icons/fa";
 import { PiSignOutBold } from "react-icons/pi";
+import { Bounce, toast } from "react-toastify";
 
 const UserInfo = () => {
   const { data: session } = authClient.useSession();
@@ -11,6 +12,17 @@ const UserInfo = () => {
 
   const handleSignOut = async () => {
     await authClient.signOut();
+    toast.error("সাইন আউট করা হয়েছে", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
   };
 
   return (

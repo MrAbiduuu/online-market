@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import SignInIWithOthers from "../components/SignInIWithOthers";
+import { Bounce, toast } from "react-toastify";
 
 const SignInPage = () => {
   const router = useRouter();
@@ -46,6 +47,17 @@ const SignInPage = () => {
     } finally {
       setLoading(false);
     }
+    toast.success("Sign In Successfull", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
   };
 
   return (

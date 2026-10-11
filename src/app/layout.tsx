@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Marquee from "./components/Marquee";
+import ToastProvider from "./components/ToastProvider";
 
 const notoSerifMono = Noto_Serif_Bengali({
   subsets: ["latin", "bengali"],
@@ -26,6 +27,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main className="bg-gray-100">
           <Marquee />
           {children}
+          <ToastProvider />
         </main>
         <Footer />
       </body>

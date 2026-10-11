@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import SignInIWithOthers from "../components/SignInIWithOthers";
+import { Bounce, toast } from "react-toastify";
 
 const SignUpPage = () => {
   const router = useRouter();
@@ -40,12 +41,24 @@ const SignUpPage = () => {
     if (data) {
       console.log(data);
       router.push("/");
+      toast.success("user created successfully");
     }
 
     if (signUpError) {
       setError(signUpError.message || "সাইন আপ করা সম্ভব হয়নি।");
       console.log(signUpError);
     }
+    toast.success("Sign Up Successfull", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
   };
 
   return (
