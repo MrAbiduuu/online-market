@@ -4,7 +4,6 @@ import { mongodbAdapter } from "@better-auth/mongo-adapter";
 
 const client = new MongoClient(process.env.MONGODB_URL as string);
 const db = client.db("bazardor-online");
-
 export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
@@ -12,7 +11,7 @@ export const auth = betterAuth({
   account: {
     accountLinking: {
       enabled: true,
-      trustedProviders: ["google", "github"],
+      trustedProviders: ["github", "google"], // Add your provider here
     },
   },
   socialProviders: {

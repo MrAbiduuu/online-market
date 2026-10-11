@@ -12,7 +12,7 @@ interface Nav {
 
 const Navbar = async () => {
   const res = await fetch(
-    "https://api.abcz.workers.dev/api/bazardor/categories",
+    "https://openapi.programming-hero.com/api/bazardor/categories",
   );
 
   const navs: Nav[] = await res.json();
@@ -42,7 +42,6 @@ const Navbar = async () => {
           </div>
         </div>
       </nav>
-      <Marquee />
     </div>
   );
 };

@@ -24,7 +24,7 @@ const ProductCategory = async ({
   const { slug } = await params;
 
   const res = await fetch(
-    `https://api.abcz.workers.dev/api/bazardor/products?category=${encodeURIComponent(slug)}`,
+    `https://openapi.programming-hero.com/api/bazardor/products?category=${encodeURIComponent(slug)}`,
     { cache: "no-store" },
   );
 

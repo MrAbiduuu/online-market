@@ -10,7 +10,7 @@ const Header = () => {
   });
 
   return (
-    <div>
+    <div className="sticky top-0 z-50 bg-white">
       <div className="container mx-auto flex items-center justify-between px-4 pt-2">
         {/* logo */}
         <Link href={`/`} className="flex items-center gap-3">
@@ -37,6 +37,7 @@ const Header = () => {
         <UserInfo />
       </div>
       <Navbar />
+
     </div>
   );
 };

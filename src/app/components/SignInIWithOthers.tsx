@@ -6,20 +6,22 @@ const SignInIWithOthers = () => {
     const data = await authClient.signIn.social({
       provider: "google",
     });
+    console.log(data);
   };
   const handleGitHubSignIn = async () => {
     const data = await authClient.signIn.social({
       provider: "github",
     });
+    console.log(data);
   };
   return (
     <div>
       <div className="flex flex-col gap-3 sm:flex-row">
         {/* Google */}
         <button
-          onClick={handleGoogleSignIn}
+          onClick={() => handleGoogleSignIn()}
           type="button"
-          className="flex w-full items-center justify-center gap-3 rounded-xl border border-gray-200 bg-white px-4 py-3 font-semibold text-gray-700 shadow-sm transition duration-200 hover:border-gray-800 hover:bg-gray-100 hover:shadow-md"
+          className="cursor-pointer flex w-full items-center justify-center gap-3 rounded-xl border border-gray-200 bg-white px-4 py-3 font-semibold text-gray-700 shadow-sm transition duration-200 hover:border-gray-800 hover:bg-gray-100 hover:shadow-md"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -50,9 +52,9 @@ const SignInIWithOthers = () => {
 
         {/* GitHub */}
         <button
-          onClick={handleGitHubSignIn}
+          onClick={() => handleGitHubSignIn()}
           type="button"
-          className="flex w-full items-center justify-center gap-3 rounded-xl border border-gray-800 bg-white px-4 py-3 font-semibold text-gray-900 shadow-sm transition duration-200 hover:border-black hover:bg-black hover:text-white hover:shadow-md"
+          className="cursor-pointer flex w-full items-center justify-center gap-3 rounded-xl border border-gray-800 bg-white px-4 py-3 font-semibold text-gray-900 shadow-sm transition duration-200 hover:border-black hover:bg-black hover:text-white hover:shadow-md"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
