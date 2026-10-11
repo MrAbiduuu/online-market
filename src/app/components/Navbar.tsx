@@ -1,6 +1,5 @@
 import Link from "next/link";
 import React from "react";
-import Marquee from "./Marquee";
 
 interface Nav {
   id: string;
