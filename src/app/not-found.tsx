@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { FaArrowLeft, FaHouse, FaStore } from "react-icons/fa6";
+import { FaHouse, FaStore } from "react-icons/fa6";
 
 const NotFound = () => {
   return (
