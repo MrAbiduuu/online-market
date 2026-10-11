@@ -10,18 +10,18 @@ const notoSerifMono = Noto_Serif_Bengali({
 });
 
 export const metadata: Metadata = {
-  title: "বাজার দর | আপনার বাজার, আপনার হাতেই",
-  description: "বাংলাদেশের নিত্যপ্রয়োজনীয় পণ্যের দৈনিক বাজার দর",
+  title: "বাজার দর",
+  description: "বাংলাদেশের নিত্যপ্রয়োজনীয় পণ্যের বাজারদর",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      data-theme="light"
       lang="bn"
+      data-theme="light"
       className={`${notoSerifMono.className} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="flex min-h-full flex-col">
         <Header />
         <main className="bg-gray-100">
           <Marquee />
