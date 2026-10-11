@@ -1,4 +1,7 @@
 import Link from "next/link";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 
 type Market = {
   market: string;
@@ -42,6 +45,7 @@ async function getProducts(): Promise<Product[]> {
 
   if (Array.isArray(raw)) return raw as Product[];
   if (Array.isArray(raw?.products)) return raw.products as Product[];
+
   if (raw && typeof raw === "object" && "id" in raw) {
     return [raw as Product];
   }
@@ -54,6 +58,16 @@ export default async function ProductDetails({
 }: {
   params: Promise<{ slug: string }>;
 }) {
+  // Check the user's Better Auth session
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  // Redirect users who are not logged in
+  if (!session) {
+    redirect("/sign-in");
+  }
+
   const { slug } = await params;
 
   let products: Product[];
@@ -292,10 +306,10 @@ export default async function ProductDetails({
           )}
         </section>
 
-        <div className="gap-4 rounded-2xl border border-base-300 bg-base-100 p-5 sm:flex-row sm:items-center">
+        <div className="rounded-2xl border border-base-300 bg-base-100 p-5">
           <Link
             href={`/category/${product.category}`}
-            className="btn btn-outline text-xl rounded-xl hover:bg-green-900 hover:text-white"
+            className="btn btn-outline rounded-xl text-xl hover:bg-green-900 hover:text-white"
           >
             সব {product.categoryNameBn} দেখুন →
           </Link>

@@ -1,4 +1,7 @@
 import ProductCategoryClient from "@/app/components/ProductCategoryClient";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 import React from "react";
 
 export interface ProductChange {
@@ -21,6 +24,17 @@ const ProductCategory = async ({
 }: {
   params: Promise<{ slug: string }>;
 }) => {
+  // Check whether the user has a valid session
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  // Redirect unauthenticated users
+  if (!session) {
+    redirect("/sign-in");
+  }
+
+  // Fetch products only after authentication
   const { slug } = await params;
 
   const res = await fetch(
